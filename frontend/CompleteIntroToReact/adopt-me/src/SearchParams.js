@@ -9,8 +9,8 @@ const SearchParams = () => {
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
 
   useEffect(() => {
-    updateBreeds([]);
-    updateBreed("");
+    setBreeds([]);
+    setBreed("");
 
     pet.breeds(animal).then(({ breeds }) => {
       const breedStrings = breeds.map(({ name }) => name);
