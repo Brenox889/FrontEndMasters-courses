@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "@reach/router";
+import { Link, Router } from "@reach/router";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
 
@@ -8,7 +8,9 @@ const App = () => {
   return (
     <React.StrictMode>
       <div>
-        <h1>Adopte Me!</h1>
+        <Link to="/">
+          <h1>Adopte Me!</h1>
+        </Link>
         <SearchParams path="/" />
         <SomeOtherRoute path="/details/1" />
         <Details path="/details/:id" />
