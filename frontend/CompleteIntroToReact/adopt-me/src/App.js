@@ -11,9 +11,11 @@ const App = () => {
         <header>
           <Link to="/">Adopte Me!</Link>
         </header>
-        <SearchParams path="/" />
-        <SomeOtherRoute path="/details/1" />
-        <Details path="/details/:id" />
+        <Router>
+          <SearchParams exact path="/" />
+          {/* <SomeOtherRoute path="/details/1" /> */}
+          <Details path="/details/:id" />
+        </Router>
       </div>
     </React.StrictMode>
   );
