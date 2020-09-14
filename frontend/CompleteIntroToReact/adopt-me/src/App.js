@@ -8,9 +8,9 @@ const App = () => {
   return (
     <React.StrictMode>
       <div>
-        <Link to="/">
-          <h1>Adopte Me!</h1>
-        </Link>
+        <header>
+          <Link to="/">Adopte Me!</Link>
+        </header>
         <SearchParams path="/" />
         <SomeOtherRoute path="/details/1" />
         <Details path="/details/:id" />
