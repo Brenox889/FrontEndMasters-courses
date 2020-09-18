@@ -8,7 +8,7 @@ function NavBar() {
     <header
       css={css`
         background-color: #333;
-        padding: 55px;
+        padding: 15px;
       `}
     >
       <Link to="/">Adopt Me!</Link>
