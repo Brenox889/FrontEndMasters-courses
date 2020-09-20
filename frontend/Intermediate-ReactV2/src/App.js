@@ -1,11 +1,15 @@
 import React, { useState, lazy, Suspense } from "react";
-import ReactDOM from "react-dom";
+
 import { Router } from "@reach/router";
-import SearchParams from "./SearchParams";
 import ThemeContext from "./ThemeContext";
 import NavBar from "./NavBar";
+import __ from "lodash";
+import moment from "moment";
+
+console.log(__, moment);
 
 const Details = lazy(() => import("./Details"));
+const SearchParams = lazy(() => import("./SearchParams"));
 
 const App = () => {
   const theme = useState("darkblue");
@@ -24,4 +28,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+export default App;
