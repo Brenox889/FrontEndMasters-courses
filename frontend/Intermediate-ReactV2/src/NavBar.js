@@ -1,6 +1,6 @@
 import React from "react";
 
-import colors from "./colors";
+// import colors from "./colors";
 
 import { Link } from "@reach/router";
 import { css } from "@emotion/core";
@@ -9,7 +9,6 @@ function NavBar() {
   return (
     <header
       css={css`
-        background-color: ${colors.light};
         padding: 15px;
       `}
     >
