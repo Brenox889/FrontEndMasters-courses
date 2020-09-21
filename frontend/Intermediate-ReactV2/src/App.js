@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, lazy } from "react";
 
 import { Router } from "@reach/router";
 import ThemeContext from "./ThemeContext";
@@ -9,7 +9,7 @@ import moment from "moment";
 console.log(__, moment);
 
 const Details = lazy(() => import("./Details"));
-const SearchParams = lazy(() => import("./SearchParams"));
+import SearchParams from "./SearchParams";
 
 const App = () => {
   const theme = useState("darkblue");
@@ -17,12 +17,12 @@ const App = () => {
     <ThemeContext.Provider value={theme}>
       <div>
         <NavBar />
-        <Suspense fallback={<h1>loading route...</h1>}>
-          <Router>
-            <SearchParams path="/" />
-            <Details path="/details/:id" />
-          </Router>
-        </Suspense>
+        {/* <Suspense fallback={<h1>loading route...</h1>}> */}
+        <Router>
+          <SearchParams path="/" />
+          <Details path="/details/:id" />
+        </Router>
+        {/* </Suspense> */}
       </div>
     </ThemeContext.Provider>
   );
