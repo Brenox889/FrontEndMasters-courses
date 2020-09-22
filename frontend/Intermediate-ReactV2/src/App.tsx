@@ -3,10 +3,8 @@ import React, { useState, lazy } from "react";
 import { Router } from "@reach/router";
 import ThemeContext from "./ThemeContext";
 import NavBar from "./NavBar";
-import __ from "lodash";
-import moment from "moment";
-
-console.log(__, moment);
+// import __ from "lodash";
+// import moment from "moment";
 
 const Details = lazy(() => import("./Details"));
 import SearchParams from "./SearchParams";
