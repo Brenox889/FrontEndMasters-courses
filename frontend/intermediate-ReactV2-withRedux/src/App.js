@@ -1,20 +1,14 @@
-import React, { useState, lazy } from "react";
-
+import React from "react";
 import { Router } from "@reach/router";
-import ThemeContext from "./ThemeContext";
+import { Provider } from "react-redux";
 import NavBar from "./NavBar";
-import __ from "lodash";
-import moment from "moment";
-
-console.log(__, moment);
-
-const Details = lazy(() => import("./Details"));
+import Details from "./Details";
 import SearchParams from "./SearchParams";
+import store from "./store";
 
 const App = () => {
-  const theme = useState("darkblue");
   return (
-    <ThemeContext.Provider value={theme}>
+    <Provider store={store}>
       <div>
         <NavBar />
         {/* <Suspense fallback={<h1>loading route...</h1>}> */}
@@ -24,7 +18,7 @@ const App = () => {
         </Router>
         {/* </Suspense> */}
       </div>
-    </ThemeContext.Provider>
+    </Provider>
   );
 };
 
