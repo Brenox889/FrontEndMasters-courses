@@ -31,6 +31,7 @@ const useFetch = (url) => {
         setError(error);
       });
   }, []);
+  return [response, loading, error];
 };
 
 const Application = () => {
