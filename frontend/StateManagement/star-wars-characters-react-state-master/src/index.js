@@ -8,20 +8,33 @@ import CharacterList from './CharacterList';
 import dummyData from './dummy-data';
 
 import './styles.scss';
+import endpoint from './endpoint';
 
-const Application = () => {
-  const [characters, setCharacters] = useState([]);
+const useFetch = (url) => {
+  const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
+    setResponse([]);
+    setError(null);
+
     fetch(endpoint + '/')
       .then((response) => response.json())
       .then((response) => {
-        setCharacters(response.characters);
+        setLoading(false);
+        setResponse(response.characters);
       })
-      .catch(console.error);
+      .catch((error) => {
+        setLoading(false);
+        setError(error);
+      });
   }, []);
+};
+
+const Application = () => {
+  const [characters, setCharacters] = useState([]);
 
   return (
     <div className="Application">
@@ -30,7 +43,8 @@ const Application = () => {
       </header>
       <main>
         <section className="sidebar">
-          <CharacterList characters={characters} />
+          {loading ? <p>Loading</p> : <CharacterList characters={characters} />}
+          {error && <p className="error">{error.message}</p>}
         </section>
       </main>
     </div>
