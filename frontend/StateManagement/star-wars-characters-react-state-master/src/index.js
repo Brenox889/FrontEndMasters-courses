@@ -20,6 +20,20 @@ const useFetch = (url) => {
     setResponse([]);
     setError(null);
 
+    const fetchUrl = async () => {
+      try {
+        const response = await fetchUrl(url);
+        const data = await response.json();
+        setResponse(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUrl();
+
     fetch(endpoint + '/')
       .then((response) => response.json())
       .then((response) => {
