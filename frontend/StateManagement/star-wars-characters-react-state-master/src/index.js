@@ -35,7 +35,8 @@ const useFetch = (url) => {
 };
 
 const Application = () => {
-  const [characters, setCharacters] = useState([]);
+  const [response, loading, error] = useFetch(endpoint + '/characters');
+  const characters = (response && response.characters) || [];
 
   return (
     <div className="Application">
