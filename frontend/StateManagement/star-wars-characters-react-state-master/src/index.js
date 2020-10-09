@@ -10,42 +10,72 @@ import dummyData from './dummy-data';
 import './styles.scss';
 import endpoint from './endpoint';
 
+const initialState = {
+  result: null,
+  loading: true,
+  error: null,
+};
+
+const fetchReducer = (state, action) => {
+  if (action.type === 'LOADING') {
+    return {
+      result: null,
+      loading: true,
+      error: null,
+    };
+  }
+  if (action.type === 'RESPONSE_COMPLETE') {
+    return {
+      result: action.payload.response,
+      loading: false,
+      error: null,
+    };
+  }
+  if (action.type === 'ERROR') {
+    return {
+      result: null,
+      loading: false,
+      error: action.payload.error,
+    };
+  }
+
+  return state;
+};
+
 const useFetch = (url) => {
-  const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [state, dispatch] = React.useReducer(fetchReducer, initialState);
+
+  // const [response, setResponse] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    setResponse([]);
-    setError(null);
+    dispatch({ type: 'LOADING' });
 
     const fetchUrl = async () => {
       try {
         const response = await fetchUrl(url);
         const data = await response.json();
-        setResponse(data);
+        dispatch({ type: 'RESPONSE_COMPLETE', payload: { response: data } });
       } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
+        dispatch({ type: 'ERROR', payload: { error } });
       }
     };
 
     fetchUrl();
 
-    fetch(endpoint + '/')
-      .then((response) => response.json())
-      .then((response) => {
-        setLoading(false);
-        setResponse(response.characters);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setError(error);
-      });
+    // fetch(endpoint + '/')
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     setLoading(false);
+    //     setResponse(response.characters);
+    //   })
+    //   .catch((error) => {
+    //     setLoading(false);
+    //     setError(error);
+    //   });
   }, []);
-  return [response, loading, error];
+  return [state.result, state.loading, state.error];
 };
 
 const Application = () => {
