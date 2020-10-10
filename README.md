@@ -10,6 +10,7 @@ FrontEnd Masters is a platform with courses in javascript technologies, from bas
 - [CompleteIntroToReact](https://github.com/Brenox889/FrontEndMasters-courses/tree/master/frontend/CompleteIntroToReact/adopt-me)
 - [Intermediate-React](https://github.com/Brenox889/FrontEndMasters-courses/tree/master/frontend/Intermediate-ReactV2)
 - [Intermediate-ReactWithRedux](https://github.com/Brenox889/FrontEndMasters-courses/tree/master/frontend/intermediate-ReactV2-withRedux)
+- [StateManagement](https://github.com/Brenox889/FrontEndMasters-courses/tree/master/frontend/StateManagement)
 ## :eyes: Technologies  
 
 FrontEnd classes: HTML | CSS | React | JavaScript | Typescript | Redux 
