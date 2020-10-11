@@ -42,6 +42,12 @@ const fetchReducer = (state, action) => {
   return state;
 };
 
+const fetchCharacters = (dispatch) =>{
+  fetch(endpoint + '/characters')
+    .then(response=>response.json())
+    .then(response=>dispatch({type:'RESPONSE_COMPLETE', payload: {characters:response.characters}}))
+}
+
 const useFetch = (url) => {
   const [state, dispatch] = React.useReducer(fetchReducer, initialState);
 
@@ -79,8 +85,14 @@ const useFetch = (url) => {
 };
 
 const Application = () => {
-  const [response, loading, error] = useFetch(endpoint + '/characters');
-  const characters = (response && response.characters) || [];
+  const [state,dispatch] = useThunkReducer(reducer, initialState);
+  const {characters} = state;
+
+  useEffect(()=>{
+    dispatch(()=>{
+
+    })
+  },[])
 
   return (
     <div className="Application">
